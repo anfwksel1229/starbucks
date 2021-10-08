@@ -1,21 +1,3 @@
-const searchEl = document.querySelector('.search');
-const searchInputEl = searchEl.querySelector('input');
-
-searchEl.addEventListener('click', function () {
-    // Logic...
-    searchInputEl.focus();
-});
-
-searchInputEl.addEventListener('focus', function () {
-    searchEl.classList.add('focused');
-    searchInputEl.setAttribute('placeholder', '통합검색');
-});
-
-searchInputEl.addEventListener('blur', function () {
-    searchEl.classList.remove('focused');
-    searchInputEl.setAttribute('placeholder', '');
-});
-
 // GSAP 이용한 JS
 const badgeEl = document.querySelector('header .badges');
 const toTopEl = document.querySelector('#to-top');
@@ -30,7 +12,7 @@ window.addEventListener('scroll', _.throttle(function () {
             display: 'none'
         });
         // 버튼 보이기!
-        gsap.to(toTopEl, .2 , {
+        gsap.to(toTopEl, .2, {
             x: 0
         });
     } else {
@@ -40,7 +22,7 @@ window.addEventListener('scroll', _.throttle(function () {
             display: 'block'
         });
         // 버튼 숨기기!
-        gsap.to(toTopEl, .2 , {
+        gsap.to(toTopEl, .2, {
             x: 100
         });
     }
@@ -48,9 +30,9 @@ window.addEventListener('scroll', _.throttle(function () {
 // _.throttle(함수 , 시간)
 
 
-toTopEl.addEventListener('click', function(){
+toTopEl.addEventListener('click', function () {
     gsap.to(window, .7, {
-        scrollTo : 0 // 스크롤 0위치로 옮겨줌 (맨위로)
+        scrollTo: 0 // 스크롤 0위치로 옮겨줌 (맨위로)
     })
 });
 
@@ -94,7 +76,7 @@ new Swiper('.awards .swiper-container', {
     autoplay: true,
     loop: true,
     spaceBetween: 30,
-    slidesPerView : 5,
+    slidesPerView: 5,
     navigation: {
         prevEl: '.awards .swiper-prev',
         nextEl: '.awards .swiper-next'
@@ -131,14 +113,14 @@ function random(min, max) {
 function floatingObject(selector, delay, size) {
     // gsap.to(요소 , 시간 , 옵션);
     gsap.to(selector, random(1.5, 2.5), // 애니메이션 동작 시간
-     {  // 옵션
-        y: size,
-        repeat: -1, // 반복재생
-        yoyo: true, // 애니메이션이 한번 진행되고 다시 돌아오게함
-        ease: Power1.easeInOut,
-        delay: random(0, delay)
-    }
-  );
+        { // 옵션
+            y: size,
+            repeat: -1, // 반복재생
+            yoyo: true, // 애니메이션이 한번 진행되고 다시 돌아오게함
+            ease: Power1.easeInOut,
+            delay: random(0, delay)
+        }
+    );
 }
 floatingObject('.floating1', 1, 15);
 floatingObject('.floating2', .5, 15);
@@ -151,17 +133,11 @@ floatingObject('.floating3', 1.5, 20);
 const spyEls = document.querySelectorAll('section.scroll-spy')
 // 요소들 반복 처리!
 spyEls.forEach(function (spyEl) {
-  new ScrollMagic
-    .Scene({ // 감시할 장면(Scene)을 추가
-      triggerElement: spyEl, // 보여짐 여부를 감시할 요소를 지정
-      triggerHook: .8 // 화면의 80% 지점에서 보여짐 여부 감시
-    })
-    .setClassToggle(spyEl, 'show') // 요소가 화면에 보이면 show 클래스 추가
-    .addTo(new ScrollMagic.Controller()) // 컨트롤러에 장면을 할당(필수!)
+    new ScrollMagic
+        .Scene({ // 감시할 장면(Scene)을 추가
+            triggerElement: spyEl, // 보여짐 여부를 감시할 요소를 지정
+            triggerHook: .8 // 화면의 80% 지점에서 보여짐 여부 감시
+        })
+        .setClassToggle(spyEl, 'show') // 요소가 화면에 보이면 show 클래스 추가
+        .addTo(new ScrollMagic.Controller()) // 컨트롤러에 장면을 할당(필수!)
 });
-
-
-
-
-const thisYear = document.querySelector('.this-year');
-thisYear.textContent = new Date().getFullYear();   // 메소드 getFullYear() 가 올해 몇년인지 알려줌
